@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-$_SESSION["registrazioni"] = array();
+if (!isset($_SESSION["registrazioni"])){
+  $_SESSION["registrazioni"] = array();
+}
+
 
 ?>
 
@@ -15,7 +18,14 @@ $_SESSION["registrazioni"] = array();
 </head>
 <body>
     <?php
+      $cf = $_GET["cf"];
+      $eta = $_GET["eta"];
 
+      $_SESSION["registrazioni"][$cf] = $eta;
     ?>
+
+  <p><a href="./form.html">Ritorna alla form</a></p>
+  <p><a href="./risultati.php">Visualizza risultati</a></p>
+
 </body>
 </html>
